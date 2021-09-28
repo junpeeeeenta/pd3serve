@@ -1,0 +1,45 @@
+{% extends "layouts/default.html" %}
+{% block title %}Welcome to Caveman2 | pd3serve{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="h2">
+        PD3記述（xml形式）を選択してください。
+    </div>
+    <form action="/submitted" method="get" enctype="multipart/form-data">
+      <!-- <div class="form-group">
+        <label for="inputText">Input text</label>
+        <input type="text" class="form-control" id="inputText" placeholder="Input text">
+      </div> -->
+      <div class="form-group">
+        <!-- <label for="inputFile">xmlファイル</label> -->
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputFile" name="file">
+          </div>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary input-group-text" id="inputFileReset">取消</button>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <button type="submit" class="btn btn-primary">アップロード</button>
+    </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script>
+    bsCustomFileInput.init();
+
+    document.getElementById('inputFileReset').addEventListener('click', function() {
+
+        bsCustomFileInput.destroy();
+
+        var elem = document.getElementById('inputFile');
+        elem.value = '';
+        var clone = elem.cloneNode(false);
+        elem.parentNode.replaceChild(clone, elem);
+
+        bsCustomFileInput.init();
+
+    });
+    </script>
+{% endblock %}
