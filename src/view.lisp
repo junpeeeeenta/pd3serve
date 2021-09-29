@@ -1,7 +1,7 @@
 (in-package :cl-user)
-(defpackage pd3serve2.view
+(defpackage pd3serve.view
   (:use :cl)
-  (:import-from :pd3serve2.config
+  (:import-from :pd3serve.config
                 :*template-directory*)
   (:import-from :caveman2
                 :*response*
@@ -15,7 +15,7 @@
                 :encode-json)
   (:export :render
            :render-json))
-(in-package :pd3serve2.view)
+(in-package :pd3serve.view)
 
 (djula:add-template-directory *template-directory*)
 
@@ -38,9 +38,9 @@
 ;;
 ;; Execute package definition
 
-(defpackage pd3serve2.djula
+(defpackage pd3serve.djula
   (:use :cl)
-  (:import-from :pd3serve2.config
+  (:import-from :pd3serve.config
                 :config
                 :appenv
                 :developmentp
@@ -48,4 +48,4 @@
   (:import-from :caveman2
                 :url-for))
 
-(setf djula:*djula-execute-package* (find-package :pd3serve2.djula))
+(setf djula:*djula-execute-package* (find-package :pd3serve.djula))

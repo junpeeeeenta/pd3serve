@@ -1,7 +1,7 @@
 (in-package :cl-user)
-(defpackage pd3serve2.db
+(defpackage pd3serve.db
   (:use :cl)
-  (:import-from :pd3serve2.config
+  (:import-from :pd3serve.config
                 :config)
   (:import-from :datafly
                 :*connection*)
@@ -10,7 +10,7 @@
   (:export :connection-settings
            :db
            :with-connection))
-(in-package :pd3serve2.db)
+(in-package :pd3serve.db)
 
 (defun connection-settings (&optional (db :maindb))
   (cdr (assoc db (config :databases))))

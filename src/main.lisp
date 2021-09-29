@@ -1,16 +1,16 @@
 (in-package :cl-user)
-(defpackage pd3serve2
+(defpackage pd3serve
   (:use :cl)
-  (:import-from :pd3serve2.config
+  (:import-from :pd3serve.config
                 :config)
   (:import-from :clack
                 :clackup)
   (:export :start
            :stop))
-(in-package :pd3serve2)
+(in-package :pd3serve)
 
 (defvar *appfile-path*
-  (asdf:system-relative-pathname :pd3serve2 #P"app.lisp"))
+  (asdf:system-relative-pathname :pd3serve #P"app.lisp"))
 
 (defvar *handler* nil)
 

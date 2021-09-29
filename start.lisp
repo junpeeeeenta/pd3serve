@@ -1,6 +1,7 @@
 (load #P"~/common-lisp/PD3/pd3.asd")
 (asdf:load-system :pd3)
 (ql:quickload :caveman2)
+(ql:quickload :cl-json)
 (ql:quickload :pd3serve)
-(pd3serve2:start :port 8080)
+(pd3serve:start :port 8080)
 (pd3:read-drawio-file "~/common-lisp/PD3/expertB.xml")

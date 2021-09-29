@@ -1,5 +1,5 @@
 (in-package :cl-user)
-(defpackage pd3serve2.config
+(defpackage pd3serve.config
   (:use :cl)
   (:import-from :envy
                 :config-env-var
@@ -11,11 +11,11 @@
            :appenv
            :developmentp
            :productionp))
-(in-package :pd3serve2.config)
+(in-package :pd3serve.config)
 
 (setf (config-env-var) "APP_ENV")
 
-(defparameter *application-root*   (asdf:system-source-directory :pd3serve2))
+(defparameter *application-root*   (asdf:system-source-directory :pd3serve))
 (defparameter *static-directory*   (merge-pathnames #P"static/" *application-root*))
 (defparameter *template-directory* (merge-pathnames #P"templates/" *application-root*))
 
