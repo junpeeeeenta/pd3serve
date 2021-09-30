@@ -7,7 +7,8 @@
         #:pd3serve.db
         #:datafly
         #:sxql
-	#:pd3)
+	#:pd3
+	#:cl-ppcre)
   (:export :*web*))
 (in-package :pd3serve.web)
 
@@ -27,16 +28,57 @@
 (defroute "/" ()
   (render #P"index.html"))
 
-(defroute "/input" ()
+(defroute "/upload" ()
   (render #P"input.html"))
 
-(defroute ("/submitted" :method :GET) (&key |file|)
-  (format nil "~A" |file|))
-
-(defroute ("/load" :method :GET) (&key (|filename| "expertB.xml"))
-  (pd3:read-drawio-file (format nil "~A~A" "~/common-lisp/PD3/" |filename|))
-  (format nil "~A~%" "COMPLETE!")
+(defroute ("/ep" :method :POST) (&key |file|)
+  (let ((fileName (second |file|)) (fileContent (flexi-streams:octets-to-string (slot-value (first |file|) 'flexi-streams::vector) :external-format :utf8)))
+    
+    (format t "~A~%~A~%" fileName fileContent)
+    (let ((filePath (concatenate 'string "~/common-lisp/pd3serve/ep-list/" fileName)))
+      (with-open-file (out filePath :direction :output :if-does-not-exist :create :if-exists :supersede :external-format :utf8)
+	(write-sequence fileContent out))
+      ))
+  (format nil "~A~%" "Uploaded!")
   )
+
+(defroute ("/ep" :method :GET) ()
+  (let ((eps-string (string "")) (path-to-eps (directory #P"~/common-lisp/pd3serve/ep-list/*.xml*")))
+    (dolist (path-to-ep path-to-eps)
+      (setq path-to-ep (cl-ppcre:regex-replace ".xml" (file-namestring path-to-ep) ""))
+      (setq eps-string (concatenate 'string  eps-string path-to-ep (format nil "~%")))
+      )
+    (format nil "~A" eps-string)
+    )
+  )
+
+(defroute ("/ep/:name/actions" :method :GET)(&key name)
+  (setf (getf (response-headers *response*) :content-type) "application/json")
+  (pd3:read-drawio-file (format nil "~A~A~A" "~/common-lisp/pd3serve/ep-list/" name  ".xml"))
+  (show-all-objects pd3::*actions*))
+(defroute ("/ep/:name/flows" :method :GET)(&key name)
+  (setf (getf (response-headers *response*) :content-type) "application/json")
+  (pd3:read-drawio-file (format nil "~A~A~A" "~/common-lisp/pd3serve/ep-list/" name  ".xml"))
+  (show-all-objects pd3::*flows*))
+(defroute ("/ep/:name/containers" :method :GET)(&key name)
+  (setf (getf (response-headers *response*) :content-type) "application/json")
+  (pd3:read-drawio-file (format nil "~A~A~A" "~/common-lisp/pd3serve/ep-list/" name  ".xml"))
+  (show-all-objects pd3::*containers*))
+
+(defroute ("/ep/:name" :method :GET)(&key name)
+  (setf (getf (response-headers *response*) :content-type) "application/json")
+  (pd3:read-drawio-file (format nil "~A~A~A" "~/common-lisp/pd3serve/ep-list/" name  ".xml"))
+  (let ((objectsJson (string "[")) (len-action (length pd3::*actions*)) (len-flow (length pd3::*flows*)) (len-container (length pd3::*containers*)))
+	   (dotimes (i len-action)
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*actions*))) ",")))
+	   (dotimes (i len-flow)
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*flows*))) ",")))
+	   (dotimes (i len-container)
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*containers*)))))
+	     (unless (= i (- len-container 1))
+	       (setq objectsJson (concatenate 'string objectsJson ","))))
+	   (setq objectsJson (concatenate 'string objectsJson "]"))
+	   (format nil "~A~%" objectsJson)))
 
 (defroute ("/show/:quantity/:object" :method :GET) (&key quantity object)
   (setf (getf (response-headers *response*) :content-type) "application/json")
@@ -52,33 +94,47 @@
   	 (show-a-object pd3::*flows*))
 	((and (string= quantity "a") (string= object "container"))
   	 (show-a-object pd3::*containers*))
-	)
-  )
+	))
 (defroute ("/show/all" :method :GET)()
   (setf (getf (response-headers *response*) :content-type) "application/json")
-  (let ((objects-json (string "[")) (len-action (length pd3::*actions*)) (len-flow (length pd3::*flows*)) (len-container (length pd3::*containers*)))
+  (let ((objectsJson (string "[")) (len-action (length pd3::*actions*)) (len-flow (length pd3::*flows*)) (len-container (length pd3::*containers*)))
 	   (dotimes (i len-action)
-	     (setq objects-json (concatenate 'string objects-json (encode-json (symbol-value (nth i pd3::*actions*))) ",")))
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*actions*))) ",")))
 	   (dotimes (i len-flow)
-	     (setq objects-json (concatenate 'string objects-json (encode-json (symbol-value (nth i pd3::*flows*))) ",")))
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*flows*))) ",")))
 	   (dotimes (i len-container)
-	     (setq objects-json (concatenate 'string objects-json (encode-json (symbol-value (nth i pd3::*containers*)))))
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i pd3::*containers*)))))
 	     (unless (= i (- len-container 1))
-	       (setq objects-json (concatenate 'string objects-json ","))))
-	   (setq objects-json (concatenate 'string objects-json "]"))
-	   (format nil "~A~%" objects-json)))
+	       (setq objectsJson (concatenate 'string objectsJson ","))))
+	   (setq objectsJson (concatenate 'string objectsJson "]"))
+	   (format nil "~A~%" objectsJson)))
 
 
 (defun show-all-objects (objects)
-   (let ((objects-json (string "[")) (len (length objects)))
+   (let ((objectsJson (string "[")) (len (length objects)))
 	   (dotimes (i len)
-	     (setq objects-json (concatenate 'string objects-json (encode-json (symbol-value (nth i objects)))))
+	     (setq objectsJson (concatenate 'string objectsJson (encode-json (symbol-value (nth i objects)))))
 	     (unless (= i (- len 1))
-	       (setq objects-json (concatenate 'string objects-json ","))))
-	   (setq objects-json (concatenate 'string objects-json "]"))
-	   (format nil "~A~%" objects-json)))
+	       (setq objectsJson (concatenate 'string objectsJson ","))))
+	   (setq objectsJson (concatenate 'string objectsJson "]"))
+	   (format nil "~A~%" objectsJson)))
 (defun show-a-object (object)
   (format nil "~A~%" (encode-json (symbol-value (first object)))))
+
+(defun replace-all (string part replacement &key (test #'char=))
+"Returns a new string in which all the occurences of the part 
+is replaced with replacement."
+    (with-output-to-string (out)
+      (loop with part-length = (length part)
+            for old-pos = 0 then (+ pos part-length)
+            for pos = (search part string
+                              :start2 old-pos
+                              :test test)
+            do (write-string string out
+                             :start old-pos
+                             :end (or pos (length string)))
+            when pos do (write-string replacement out)
+            while pos))) 
 ;;
 ;; Error pages
 
@@ -87,3 +143,5 @@
   (merge-pathnames #P"_errors/404.html"
                    *template-directory*)
   )
+
+
