@@ -1,12 +1,12 @@
 # pd3serve
-デジタルトリプレットの枠組みに基づき、エンジニアリングプロセス(EP)の再利用を支援するWEBシステムです。具体的にはまず、PD3(Process Modeling Language for Digital Triplet)をプロセスモデリング言語としてEPを記述します。つぎに、PD3のオントロジーでRDF化し、セマンティックWEBでの共有を可能にします。
-
+デジタルトリプレットの枠組みに基づき、エンジニアリングプロセス(EP)の再利用を支援するWEBシステムです。まず、PD3(Process Modeling Language for Digital Triplet)をプロセスモデリング言語としてEPを記述します。つぎに、PD3のオントロジーでRDF化し、セマンティックWEBでの共有を可能にします。
+***
 ## Usage
-WEBAPIの仕様書を現在作成中です。
+***WEBAPIの仕様書を現在作成中です。***
 
 [インストール](#installation)後、以下のコマンドを実行してください。
 ```sh
-cd ~/common-lisp/pd3serve
+$ cd ~/common-lisp/pd3serve
 ~/common-lisp/pd3serve$ APP_ENV=production clackup --port your_port --address your_ipaddress app.lisp
 
 To load "pd3serve":
@@ -34,12 +34,13 @@ Listening on your_ipaddress:your_port.
 - xmlreader
 
 それぞれ以下のコマンドでクローン可能です。
-  
-- `git clone https://github.com/junpeeeeenta/PD3.git`
-- `git clone https://github.com/junpeeeeenta/pd3serve.git`
-- `git clone https://github.com/junpeeeeenta/drawio.git`
-- `git clone https://github.com/junpeeeeenta/line-reader.git`
-- `git clone https://github.com/junpeeeeenta/xmlreader.git`
+```sh
+git clone https://github.com/junpeeeeenta/PD3.git
+git clone https://github.com/junpeeeeenta/pd3serve.git
+git clone https://github.com/junpeeeeenta/drawio.git
+git clone https://github.com/junpeeeeenta/line-reader.git
+git clone https://github.com/junpeeeeenta/xmlreader.git
+```
 
 例えば、common-lispディレクトリ内に5つのレポジトリをクローンした場合、以下のようになります。
 
