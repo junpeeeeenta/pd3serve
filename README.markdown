@@ -49,6 +49,8 @@ git clone https://github.com/junpeeeeenta/xmlreader.git
 PD3 pd3serve drawio line-reader xmlreader
 ```
 つぎに[roswell](https://roswell.github.io/Installation.html)と[clack](https://github.com/fukamachi/clack)をインストールしてください。
+
+以上ですべてのインストールが完了します。
 ## See Also
 本プロジェクトは、主に以下を使用しています。
 - [caveman2](https://github.com/fukamachi/caveman)
