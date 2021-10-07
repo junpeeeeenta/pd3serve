@@ -58,9 +58,9 @@ PD3 pd3serve drawio line-reader xmlreader
 
 ## Author
 
-* jumpei goto
+* jumpei
 
 ## Copyright
 
-Copyright (c) 2021 jumpei goto
+Copyright (c) 2021 jumpei
 
