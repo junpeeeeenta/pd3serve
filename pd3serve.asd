@@ -17,7 +17,13 @@
 
                ;; for DB
                "datafly"
-               "sxql")
+               "sxql"
+
+	       ;; for PD3
+	       "pd3"
+	       "drawio"
+	       "xmlreader"
+	       "line-reader")
   :components ((:module "src"
                 :components
                 ((:file "main" :depends-on ("config" "view" "db"))

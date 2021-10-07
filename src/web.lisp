@@ -7,7 +7,6 @@
         #:pd3serve.db
         #:datafly
         #:sxql
-	#:pd3
 	#:cl-ppcre)
   (:export :*web*))
 (in-package :pd3serve.web)
