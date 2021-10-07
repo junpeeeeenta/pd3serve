@@ -55,6 +55,7 @@ PD3 pd3serve drawio line-reader xmlreader
 本プロジェクトは、主に以下を使用しています。
 - [caveman2](https://github.com/fukamachi/caveman)
 - [PD3](https://github.com/DigitalTriplet/PD3)
+- [drawio](https://github.com/jgraph/drawio)
 
 ## Author
 
