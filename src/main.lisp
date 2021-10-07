@@ -14,8 +14,8 @@
 
 (defvar *handler* nil)
 
-(defun start (&rest args &key server port debug &allow-other-keys)
-  (declare (ignore server port debug))
+(defun start (&rest args &key server port debug allow-other-keys)
+  (declare (ignore server port debug address))
   (when *handler*
     (restart-case (error "Server is already running.")
       (restart-server ()
