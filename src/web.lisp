@@ -31,7 +31,8 @@
   (render #P"input.html"))
 
 (defroute ("/EPs/:EPName" :method :POST) (&key |file| EPName)
-  (when (eq EPName nil) (setq EPName (second |file|)))
+  (cond ((eq EPName nil) (setq EPName (second |file|)))
+        ((string= EPName '":EPName") (setq EPName (cl-ppcre:regex-replace ".xml" (second |file|) ""))))
   (let
       ((fileName EPName) 
       (fileContent (flexi-streams:octets-to-string (slot-value (first |file|) 'flexi-streams::vector) :external-format :utf8))) 
