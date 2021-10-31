@@ -31,8 +31,10 @@
   (render #P"input.html"))
 
 (defroute ("/EPs/:EPName" :method :POST) (&key |file| EPName)
+  (when (eq EPName nil) (setq EPName (second |file|)))
   (let
-      ((fileName EPName) (fileContent (flexi-streams:octets-to-string (slot-value (first |file|) 'flexi-streams::vector) :external-format :utf8))) 
+      ((fileName EPName) 
+      (fileContent (flexi-streams:octets-to-string (slot-value (first |file|) 'flexi-streams::vector) :external-format :utf8))) 
     (format t "~A~%~A~%" fileName fileContent)
     (let ((filePath (concatenate 'string "~/common-lisp/pd3serve/ep-list/" fileName ".xml")))
       (with-open-file (out filePath :direction :output :if-does-not-exist :create :if-exists :supersede :external-format :utf8)
