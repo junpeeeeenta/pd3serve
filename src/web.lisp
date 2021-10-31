@@ -30,7 +30,7 @@
 (defroute "/upload" ()
   (render #P"input.html"))
 
-(defroute ("/EP/:EPName" :method :POST) (&key |file| EPName)
+(defroute ("/EPs/:EPName" :method :POST) (&key |file| EPName)
   (let
       ((fileName EPName) (fileContent (flexi-streams:octets-to-string (slot-value (first |file|) 'flexi-streams::vector) :external-format :utf8))) 
     (format t "~A~%~A~%" fileName fileContent)
