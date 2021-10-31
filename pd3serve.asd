@@ -4,6 +4,7 @@
   :license ""
   :depends-on ("clack"
                "lack"
+               "pd3serve-errors"
                "caveman2"
                "envy"
                "cl-ppcre"

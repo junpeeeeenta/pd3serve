@@ -15,6 +15,7 @@
                 :*static-directory*))
 (in-package :pd3serve.app)
 
+(funcall pd3serve-errors:*clack-error-middleware*
 (builder
  (:static
   :path (lambda (path)
@@ -37,3 +38,4 @@
          (let ((datafly:*trace-sql* t))
            (funcall app env)))))
  *web*)
+:debug t)
