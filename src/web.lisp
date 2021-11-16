@@ -56,6 +56,12 @@
       (format nil "~A" (encode-json eps-list))
   )))
 
+(defroute ("/EPs/:EPName" :method :DELETE) (&key EPName)
+  (let ((filePath (concatenate 'string "~/common-lisp/pd3serve/ep-list/" EPName ".xml")))
+    (let ((q (probe-file filePath)))
+      (delete-file q)))
+  (format nil "~A~%" "Deleted!"))
+
 (defroute ("/EPs/:EPName/actions" :method :GET)(&key EPName)
   (setf (getf (response-headers *response*) :content-type) "application/json")
   (pd3:read-drawio-file (format nil "~A~A~A" "~/common-lisp/pd3serve/ep-list/" EPName  ".xml"))
@@ -95,20 +101,6 @@
 (defun show-a-object (object)
   (format nil "~A~%" (encode-json (symbol-value (first object)))))
 
-(defun replace-all (string part replacement &key (test #'char=))
-"Returns a new string in which all the occurences of the part 
-is replaced with replacement."
-    (with-output-to-string (out)
-      (loop with part-length = (length part)
-            for old-pos = 0 then (+ pos part-length)
-            for pos = (search part string
-                              :start2 old-pos
-                              :test test)
-            do (write-string string out
-                             :start old-pos
-                             :end (or pos (length string)))
-            when pos do (write-string replacement out)
-            while pos))) 
 ;;
 ;; Error pages
 
