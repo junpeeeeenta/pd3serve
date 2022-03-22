@@ -1,9 +1,7 @@
-# pd3serve
-デジタルトリプレットの枠組みに基づき、エンジニアリングプロセス(EP)の再利用を支援するWEBシステムです。まず、PD3(Process Modeling Language for Digital Triplet)をプロセスモデリング言語としてEPを記述します。つぎに、PD3のオントロジーでRDF化し、セマンティックWEBでの共有を可能にします。
-
 ## Usage
 ***WEBAPIの仕様書を現在作成中です。***
 
+###サーバの立ち上げ方法
 [インストール](#installation)後、以下のコマンドを実行してください。
 ```sh
 $ cd ~/common-lisp/pd3serve
