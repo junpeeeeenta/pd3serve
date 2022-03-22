@@ -1,8 +1,9 @@
 ## Usage
-本APIの仕様：https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 
+###本APIの仕様 
+https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 から参照してほしい．
 
-### サーバの立ち上げ方法 
-[インストール](#installation)後、以下のコマンドを実行してください。
+### 本システムの立ち上げ方法 
+[インストール](#installation)後、以下のコマンドを実行すれば本システム (サーバ) を立上げることができる．
 ```sh
 $ cd ~/common-lisp/pd3serve
 ~/common-lisp/pd3serve$ APP_ENV=production clackup --port your_port --address your_ipaddress app.lisp
@@ -24,7 +25,7 @@ Listening on your_ipaddress:your_port.
 ```
 
 ## Installation
-何らかのディレクトリの中に、5つのレポジトリをクローンしてください。
+本システム何らかのディレクトリの中に、5つのレポジトリをクローンし
 - pd3
 - pd3serve
 - drawio
