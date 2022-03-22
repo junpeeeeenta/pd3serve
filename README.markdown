@@ -3,7 +3,7 @@
 https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 から参照してほしい．
 
 ### 本システムの立ち上げ方法 
-[インストール](##installation)後、以下のコマンドを実行すれば本システム (サーバ) を立上げることができる．
+[インストール](#installation)後、以下のコマンドを実行すれば本システム (サーバ) を立上げることができる．
 ```sh
 $ cd ~/common-lisp/pd3serve
 ~/common-lisp/pd3serve$ APP_ENV=production clackup --port your_port --address your_ipaddress app.lisp
