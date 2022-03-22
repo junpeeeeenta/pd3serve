@@ -54,6 +54,7 @@ PD3 pd3serve drawio line-reader xmlreader
 ・clack：https://github.com/fukamachi/clack
 
 以上でインストールが完了した．
+システムの立ち上げおよび使用方法については，[Usage](#Usage)を参照してほしい．
 
 
 ## See Also
