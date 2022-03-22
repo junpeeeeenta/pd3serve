@@ -48,7 +48,7 @@ git clone https://github.com/junpeeeeenta/xmlreader.git
 ~/common-lisp$ ls
 PD3 pd3serve drawio line-reader xmlreader
 ```
-つぎにroswellとclackをインストールする．
+つぎにroswellとclackをインストールする． 
 それぞれ，下記のURLを参照してほしい．
 ・roswell：https://roswell.github.io/Installation.html
 ・clack：https://github.com/fukamachi/clack
