@@ -50,7 +50,7 @@ PD3 pd3serve drawio line-reader xmlreader
 ```
 つぎにroswellとclackをインストールする．  
 それぞれ，下記のURLを参照してほしい．  
-・roswell：https://roswell.github.io/Installation.html
+・roswell：https://roswell.github.io/Installation.html  
 ・clack：https://github.com/fukamachi/clack
 
 以上でインストールが完了した．  
