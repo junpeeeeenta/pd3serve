@@ -1,5 +1,5 @@
 ## Usage
-###本APIの仕様 
+### 本APIの仕様 
 https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 から参照してほしい．
 
 ### 本システムの立ち上げ方法 
