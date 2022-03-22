@@ -25,15 +25,15 @@ Listening on your_ipaddress:your_port.
 ```
 
 ## Installation
-本システムをインストールする方法を述べる．
-まず，あるディレクトリ内に以下5つのレポジトリをクローンする．
+本システムをインストールする方法を述べる．  
+まず，あるディレクトリ内に以下5つのレポジトリをクローンする．  
 - pd3：https://github.com/junpeeeeenta/PD3.git
 - pd3serve：https://github.com/junpeeeeenta/pd3serve.git
 - drawio：https://github.com/junpeeeeenta/drawio.git
 - line-reader：https://github.com/junpeeeeenta/line-reader.git
 - xmlreader：https://github.com/junpeeeeenta/xmlreader.git
 
-それぞれ以下のコマンドでクローンできる．
+それぞれ以下のコマンドでクローンできる．  
 ```sh
 git clone https://github.com/junpeeeeenta/PD3.git
 git clone https://github.com/junpeeeeenta/pd3serve.git
@@ -42,18 +42,18 @@ git clone https://github.com/junpeeeeenta/line-reader.git
 git clone https://github.com/junpeeeeenta/xmlreader.git
 ```
 
-例えば，「common-lisp」ディレクトリ内に5つのレポジトリをクローンした場合，以下のようになる．
+例えば，「common-lisp」ディレクトリ内に5つのレポジトリをクローンした場合，以下のようになる．  
 
 ```sh
 ~/common-lisp$ ls
 PD3 pd3serve drawio line-reader xmlreader
 ```
-つぎにroswellとclackをインストールする． 
-それぞれ，下記のURLを参照してほしい．
+つぎにroswellとclackをインストールする．  
+それぞれ，下記のURLを参照してほしい．  
 ・roswell：https://roswell.github.io/Installation.html
 ・clack：https://github.com/fukamachi/clack
 
-以上でインストールが完了した． 
+以上でインストールが完了した．  
 システムの立ち上げおよび使用方法については，[Usage](#Usage)を参照してほしい．
 
 ## Author
