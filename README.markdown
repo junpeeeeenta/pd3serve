@@ -3,7 +3,7 @@
 https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 から参照してほしい．
 
 ### 本システムの立ち上げ方法 
-[インストール](#installation)後、以下のコマンドを実行すれば本システム (サーバ) を立上げることができる．
+[インストール](##installation)後、以下のコマンドを実行すれば本システム (サーバ) を立上げることができる．
 ```sh
 $ cd ~/common-lisp/pd3serve
 ~/common-lisp/pd3serve$ APP_ENV=production clackup --port your_port --address your_ipaddress app.lisp
@@ -48,9 +48,14 @@ git clone https://github.com/junpeeeeenta/xmlreader.git
 ~/common-lisp$ ls
 PD3 pd3serve drawio line-reader xmlreader
 ```
-つぎに[roswell](https://roswell.github.io/Installation.html)と[clack](https://github.com/fukamachi/clack)をインストールしてください。
+つぎにroswellとclackをインストールする．
+それぞれ，下記のURLを参照してほしい．
+・roswell：https://roswell.github.io/Installation.html
+・clack：https://github.com/fukamachi/clack
 
-以上ですべてのインストールが完了します。
+以上でインストールが完了した．
+
+
 ## See Also
 本プロジェクトは、主に以下を使用しています。
 - [caveman2](https://github.com/fukamachi/caveman)
