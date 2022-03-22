@@ -53,15 +53,8 @@ PD3 pd3serve drawio line-reader xmlreader
 ・roswell：https://roswell.github.io/Installation.html
 ・clack：https://github.com/fukamachi/clack
 
-以上でインストールが完了した．
+以上でインストールが完了した． 
 システムの立ち上げおよび使用方法については，[Usage](#Usage)を参照してほしい．
-
-
-## See Also
-本プロジェクトは、主に以下を使用しています。
-- [caveman2](https://github.com/fukamachi/caveman)
-- [PD3](https://github.com/DigitalTriplet/PD3)
-- [drawio](https://github.com/jgraph/drawio)
 
 ## Author
 
