@@ -1,7 +1,7 @@
 ## Usage
 ***WEBAPIの仕様書を現在作成中です。***
 
-###サーバの立ち上げ方法
+### サーバの立ち上げ方法 
 [インストール](#installation)後、以下のコマンドを実行してください。
 ```sh
 $ cd ~/common-lisp/pd3serve
