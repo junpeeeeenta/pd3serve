@@ -1,5 +1,5 @@
 ## Usage
-***WEBAPIの仕様書を現在作成中です。***
+本APIの仕様：https://app.swaggerhub.com/apis-docs/junpeeeeenta/pd3serve/1.0.0 
 
 ### サーバの立ち上げ方法 
 [インストール](#installation)後、以下のコマンドを実行してください。
