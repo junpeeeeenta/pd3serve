@@ -25,14 +25,15 @@ Listening on your_ipaddress:your_port.
 ```
 
 ## Installation
-本システム何らかのディレクトリの中に、5つのレポジトリをクローンし
-- pd3
-- pd3serve
-- drawio
-- line-reader
-- xmlreader
+本システムをインストールする方法を述べる．
+まず，あるディレクトリ内に以下5つのレポジトリをクローンする．
+- pd3：https://github.com/junpeeeeenta/PD3.git
+- pd3serve：https://github.com/junpeeeeenta/pd3serve.git
+- drawio：https://github.com/junpeeeeenta/drawio.git
+- line-reader：https://github.com/junpeeeeenta/line-reader.git
+- xmlreader：https://github.com/junpeeeeenta/xmlreader.git
 
-それぞれ以下のコマンドでクローン可能です。
+それぞれ以下のコマンドでクローンできる．
 ```sh
 git clone https://github.com/junpeeeeenta/PD3.git
 git clone https://github.com/junpeeeeenta/pd3serve.git
@@ -41,7 +42,7 @@ git clone https://github.com/junpeeeeenta/line-reader.git
 git clone https://github.com/junpeeeeenta/xmlreader.git
 ```
 
-例えば、common-lispディレクトリ内に5つのレポジトリをクローンした場合、以下のようになります。
+例えば，「common-lisp」ディレクトリ内に5つのレポジトリをクローンした場合，以下のようになる．
 
 ```sh
 ~/common-lisp$ ls
